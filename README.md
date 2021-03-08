@@ -18,17 +18,16 @@
 
 ## items テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| item_name       | string     | null: false |
-| description     | text       | null: false |
-| description     | text       | null: false |
-| category        | string     | null: false |
-| status          | string     | null: false |
-| delivery_fee    | string     | null: false |
-| delivery_source | string     | null: false |
-| delivery_days   | string     | null: false |
-| price           | string     | null: false |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| item_name       | string     | null: false                    |
+| description     | text       | null: false                    |
+| category        | string     | null: false                    |
+| status          | string     | null: false                    |
+| delivery_fee    | string     | null: false                    |
+| delivery_source | string     | null: false                    |
+| delivery_days   | string     | null: false                    |
+| price           | string     | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
 ### Association
@@ -48,15 +47,15 @@
 - has_one :item
 
 ## destination
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_cord  | string     | null: false |
-| prefecture   | string     | null: false |
-| city         | string     | null: false |
-| address_line | string     | null: false |
-| building     | string     |             |
-| phone_number | string     | null: false |
-| purchase_users  | reference  | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_cord    | string     | null: false                    |
+| prefecture     | string     | null: false                    |
+| city           | string     | null: false                    |
+| address_line   | string     | null: false                    |
+| building       | string     |                                |
+| phone_number   | string     | null: false                    |
+| purchase_users | reference  | null: false, foreign_key: true |
 
 ### Association
 - has_one :purchase_user
