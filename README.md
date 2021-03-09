@@ -22,7 +22,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| item_name          | string     | null: false                    |
+| name               | string     | null: false                    |
 | description        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | status_id          | integer    | null: false                    |
@@ -30,7 +30,7 @@
 | prefecture_id      | integer    | null: false                    |
 | delivery_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | reference  | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -38,10 +38,10 @@
 
 ## purchase_users テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | reference  | null: false, foreign_key: true |
-| item    | reference  | null: false, foreign_key: true |
+| Column  | Type        | Options                        |
+| ------- | ----------- | ------------------------------ |
+| user    | references  | null: false, foreign_key: true |
+| item    | references  | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -57,7 +57,7 @@
 | address_line   | string     | null: false                    |
 | building       | string     |                                |
 | phone_number   | string     | null: false                    |
-| purchase_user  | reference  | null: false, foreign_key: true |
+| purchase_user  | references | null: false, foreign_key: true |
 
 ### Association
 - belong_to :purchase_user
