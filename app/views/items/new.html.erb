@@ -1,15 +1,14 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: @item, local: true) do |f| %>
 
-    <% render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
-    <%# 出品画像 %>
+    
     <div class="img-upload">
       <div class="weight-bold-text">
         出品画像
@@ -22,8 +21,7 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /出品画像 %>
-    <%# 商品名と商品説明 %>
+    
     <div class="new-items">
       <div class="weight-bold-text">
         商品名
@@ -92,6 +90,7 @@
       </div>
       <div>
         <div class="price-content">
+    
           <div class="price-text">
             <span>価格</span>
             <span class="indispensable">必須</span>
@@ -113,9 +112,7 @@
         </span>
       </div>
     </div>
-    <%# /販売価格 %>
-
-    <%# 注意書き %>
+    
     <div class="caution">
       <p class="sentence">
         <a href="#">禁止されている出品、</a>
@@ -133,13 +130,12 @@
         に同意したことになります。
       </p>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
+    
     <div class="sell-btn-contents">
       <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+   
   </div>
   <% end %>
 
