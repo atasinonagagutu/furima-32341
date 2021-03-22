@@ -18,8 +18,7 @@
 - has_many :items
 - has_many :purchase_users
 
-## items テーブル
-
+## items テーブル”
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
