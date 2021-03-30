@@ -6,7 +6,7 @@ RSpec.describe Order, type: :model do
       @order = FactoryBot.build(:order)
     end
 
-    it '郵便番号・都道府県・市区町村・番地・電話番号が正しく入力されていれば保存できること' do
+    it '郵便番号・都道府県・市区町村・番地・電話番号・tokenが正しく入力されていれば保存できること' do
       expect(@order).to be_valid
     end
     it 'postal_cordに半角ハイフンがないと保存できないこと' do
@@ -51,6 +51,11 @@ RSpec.describe Order, type: :model do
       @order.phone_number = '090123456789'
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+    end
+    it "tokenが空では登録できないこと" do
+      @order.token = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Token can't be blank")
     end
   end
 end

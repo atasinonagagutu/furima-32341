@@ -1,11 +1,11 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :postal_cord, :prefecture_id, :city, :address_line, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postal_cord, :prefecture_id, :city, :address_line, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :postal_cord, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :phone_number, numericality: { only_integer: true }, length: { maximum: 11 }
-    validates :city, :address_line
+    validates :city, :address_line, :token 
   end
   validates :prefecture_id, numericality: { other_than: 1 }
 

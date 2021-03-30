@@ -7,6 +7,6 @@ function count (){
     const profit = document.getElementById('profit')
       profit.innerHTML = itemPrice.value - taxPrice
   });
-}
+};
 
 window.addEventListener('load', count);
