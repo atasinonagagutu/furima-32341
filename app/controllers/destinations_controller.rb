@@ -1,13 +1,10 @@
 class DestinationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
-  before_action :set_item, only: [:index, :new, :create]
-  before_action :move_to_index, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
     @order = Order.new
-  end
-
-  def new
   end
 
   def create
