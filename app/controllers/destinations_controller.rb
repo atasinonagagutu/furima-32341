@@ -1,12 +1,13 @@
 class DestinationsController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :set_item, only: [:index, :new, :create]
+  before_action :move_to_index, only: [:index, :new, :create]
 
   def index
     @order = Order.new
   end
 
   def new
-    order = Order.new
   end
 
   def create
@@ -37,5 +38,11 @@ class DestinationsController < ApplicationController
         card: order_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def move_to_index
+    if @item.user_id == current_user.id || @item.purchase_user.present?
+      redirect_to root_path
+    end
   end
 end
