@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Destinations", type: :request do
-
+RSpec.describe 'Destinations', type: :request do
 end

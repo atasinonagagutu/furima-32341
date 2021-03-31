@@ -12,12 +12,12 @@ RSpec.describe Order, type: :model do
     it 'postal_cordに半角ハイフンがないと保存できないこと' do
       @order.postal_cord = '1234567'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Postal cord is invalid")
+      expect(@order.errors.full_messages).to include('Postal cord is invalid')
     end
     it 'prefectureが空だと保存できないこと' do
       @order.prefecture_id = '1'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Prefecture must be other than 1")
+      expect(@order.errors.full_messages).to include('Prefecture must be other than 1')
     end
     it 'cityが空だと保存できないこと' do
       @order.city = ''
@@ -45,14 +45,14 @@ RSpec.describe Order, type: :model do
     it 'phone_numberが数字以外だと保存できないこと' do
       @order.phone_number = 'a'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Phone number is not a number")
+      expect(@order.errors.full_messages).to include('Phone number is not a number')
     end
     it 'phone_numberが12桁以上だと保存できないこと' do
       @order.phone_number = '090123456789'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      expect(@order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
-    it "tokenが空では登録できないこと" do
+    it 'tokenが空では登録できないこと' do
       @order.token = nil
       @order.valid?
       expect(@order.errors.full_messages).to include("Token can't be blank")
