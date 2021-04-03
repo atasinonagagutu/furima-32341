@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   describe '配送先情報の保存' do
     before do
-      @order = FactoryBot.build(:order)
+      item = FactoryBot.build(:item)
+      user = FactoryBot.build(:user)
+      @order = FactoryBot.build(:order, item_id: item.id, user_id: user.id)
     end
 
     it '郵便番号・都道府県・市区町村・番地・電話番号・tokenが正しく入力されていれば保存できること' do
@@ -58,17 +60,12 @@ RSpec.describe Order, type: :model do
       expect(@order.errors.full_messages).to include("Token can't be blank")
     end
     it 'user_idが空では登録できないこと' do
-      @order.token = nil
-      @order.valid?
-      expect(@order.errors.full_messages).to include("Token can't be blank")
-    end
-    it 'user_idが空では登録できないこと' do
       @order.user_id = nil
       @order.valid?
       expect(@order.errors.full_messages).to include("User can't be blank")
     end
     it 'item_idが空では登録できないこと' do
-      @order.item_id = nil
+      @item.item_id = nil
       @order.valid?
       expect(@order.errors.full_messages).to include("Item can't be blank")
     end
