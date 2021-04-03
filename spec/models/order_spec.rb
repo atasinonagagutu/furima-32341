@@ -24,6 +24,11 @@ RSpec.describe Order, type: :model do
     end
 
     context '商品が出品できない場合' do
+      it 'postal_cordが空だと保存できないこと' do
+        @order.postal_cord = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Postal cord can't be blank")
+      end
       it 'postal_cordに半角ハイフンがないと保存できないこと' do
         @order.postal_cord = '1234567'
         @order.valid?
